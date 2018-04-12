@@ -27,7 +27,7 @@ class SeoController extends Controller
     /**
      * @Route("/akademija", name="akademija")
      */
-    public function indefx(Request $request)
+    public function akademija(Request $request)
     {
 
         $utm_campaign = $request->get('utm_campaign');
