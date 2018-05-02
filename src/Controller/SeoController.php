@@ -27,24 +27,20 @@ class SeoController extends Controller
     }
 
     /**
-     * @Route("/akademija", name="akademija")
+     * @Route("/akademija/{slug}", name="akademija")
      */
     public function akademija(Request $request)
     {
         $utm_campaign = $request->get('utm_campaign');
         $utm_term = $request->get('utm_term');
         $utm_content = $request->get('utm_content');
-        $url = $this->get('kernel')->getProjectDir() . $this->urlPart;
-        $json = file_get_contents($url);
-        $data = json_decode($json, true);
 
         return $this->render('seo/vertinimas.html.twig',
             [
             'title' => 'Akademija',
-            'utm_campaign' => $utm_campaign,
-            'utm_term' => $utm_term,
-            'utm_content' => $utm_content,
-            'data' => $data
+            'utm_campaign' => urldecode($utm_campaign),
+            'utm_term' => urldecode($utm_term),
+            'utm_content' => urldecode($utm_content)
             ]);
     }
 }
